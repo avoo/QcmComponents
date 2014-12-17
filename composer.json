@@ -1,0 +1,20 @@
+{
+    "name": "avoo/qcm-components",
+    "description": "Components of the QCM",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jérémy Jégou",
+            "email": "jejeavo@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Qcm\\Component\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
