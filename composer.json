@@ -3,7 +3,7 @@
     "description": "Components of the QCM",
     "license": "MIT",
     "type": "symfony-bundle",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3"
     },
