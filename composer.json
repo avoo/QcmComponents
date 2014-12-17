@@ -3,6 +3,12 @@
     "description": "Components of the QCM",
     "license": "MIT",
     "type": "library",
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
     "authors": [
         {
             "name": "Jérémy Jégou",
