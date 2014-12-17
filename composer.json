@@ -9,6 +9,7 @@
     "require-dev": {
         "phpunit/phpunit": "*"
     },
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Jérémy Jégou",
