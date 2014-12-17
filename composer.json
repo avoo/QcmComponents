@@ -2,14 +2,14 @@
     "name": "avoo/qcm-components",
     "description": "Components of the QCM",
     "license": "MIT",
-    "type": "library",
+    "type": "symfony-bundle",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.3.3"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
     },
-    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Jérémy Jégou",
