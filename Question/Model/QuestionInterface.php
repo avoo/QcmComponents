@@ -16,6 +16,13 @@ interface QuestionInterface
     const TYPE_TEXT = 'text';
 
     /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId();
+
+    /**
      * Set question name
      *
      * @param string $name

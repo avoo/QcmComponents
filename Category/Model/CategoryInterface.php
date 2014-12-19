@@ -8,6 +8,13 @@ namespace Qcm\Component\Category\Model;
 interface CategoryInterface
 {
     /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId();
+
+    /**
      * Set name of category
      *
      * @param string $name
@@ -22,4 +29,20 @@ interface CategoryInterface
      * @return string
      */
     public function getName();
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return $this
+     */
+    public function setDescription($description);
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription();
 }
