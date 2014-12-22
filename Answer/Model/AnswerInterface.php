@@ -1,6 +1,7 @@
 <?php
 
-namespace Qcm\Component\Category\Model;
+namespace Qcm\Component\Answer\Model;
+
 use Qcm\Component\Question\Model\QuestionInterface;
 
 /**
@@ -8,6 +9,13 @@ use Qcm\Component\Question\Model\QuestionInterface;
  */
 interface AnswerInterface
 {
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId();
+
     /**
      * Set question
      *
@@ -27,11 +35,11 @@ interface AnswerInterface
     /**
      * Set value
      *
-     * @param string $name
+     * @param string $value
      *
      * @return $this
      */
-    public function setValue($name);
+    public function setValue($value);
 
     /**
      * Get value
