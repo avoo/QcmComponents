@@ -2,6 +2,8 @@
 
 namespace Qcm\Component\Question\Model;
 
+use Doctrine\Common\Collections\Collection;
+use Qcm\Component\Answer\Model\AnswerInterface;
 use Qcm\Component\Category\Model\CategoryInterface;
 
 /**
@@ -92,4 +94,45 @@ interface QuestionInterface
      * @return bool
      */
     public function isEnabled();
+
+    /**
+     * Get answers associated with this question
+     *
+     * @return AnswerInterface[]|Collection
+     */
+    public function getAnswers();
+
+    /**
+     * Does a answer belongs to question?
+     *
+     * @param AnswerInterface $answer
+     *
+     * @return Boolean
+     */
+    public function hasAnswer(AnswerInterface $answer);
+
+    /**
+     * Is there any answers in question?
+     *
+     * @return bool
+     */
+    public function hasAnswers();
+
+    /**
+     * Add a answer to question
+     *
+     * @param AnswerInterface $answer
+     *
+     * @return $this
+     */
+    public function addAnswer(AnswerInterface $answer);
+
+    /**
+     * Remove answer from question
+     *
+     * @param AnswerInterface $answer
+     *
+     * @return $this
+     */
+    public function removeAnswer(AnswerInterface $answer);
 }
