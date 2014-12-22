@@ -43,11 +43,11 @@ interface QuestionInterface
     /**
      * Set category
      *
-     * @param CategoryInterface $category
+     * @param CategoryInterface|null $category
      *
      * @return $this
      */
-    public function setCategory(CategoryInterface $category);
+    public function setCategory(CategoryInterface $category = null);
 
     /**
      * Get question category
