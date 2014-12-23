@@ -96,6 +96,22 @@ interface QuestionInterface
     public function isEnabled();
 
     /**
+     * Set level of question
+     *
+     * @param integer $level
+     *
+     * @return $this
+     */
+    public function setLevel($level);
+
+    /**
+     * Get level
+     *
+     * @return string
+     */
+    public function getLevel();
+
+    /**
      * Get answers associated with this question
      *
      * @return AnswerInterface[]|Collection
