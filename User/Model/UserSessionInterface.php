@@ -8,6 +8,13 @@ namespace Qcm\Component\User\Model;
 interface UserSessionInterface
 {
     /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId();
+
+    /**
      * Set user
      *
      * @param UserInterface $user

@@ -1,6 +1,8 @@
 <?php
 
 namespace Qcm\Component\User\Model;
+
+use Qcm\Component\Answer\Model\AnswerInterface;
 use Qcm\Component\Question\Model\QuestionInterface;
 
 /**
@@ -23,6 +25,22 @@ interface SessionConfigurationInterface
      * @return \DateTime
      */
     public function getDateStart();
+
+    /**
+     * Set date end
+     *
+     * @param \DateTime $date
+     *
+     * @return $this
+     */
+    public function setDateEnd(\DateTime $date);
+
+    /**
+     * Get date end
+     *
+     * @return \DateTime
+     */
+    public function getDateEnd();
 
     /**
      * Set timeout
@@ -80,4 +98,45 @@ interface SessionConfigurationInterface
      * @return $this
      */
     public function removeQuestion(QuestionInterface $question);
+
+    /**
+     * Get answers
+     *
+     * @return mixed
+     */
+    public function getAnswers();
+
+    /**
+     * Has answer
+     *
+     * @param AnswerInterface $answer
+     *
+     * @return bool
+     */
+    public function hasAnswer(AnswerInterface $answer);
+
+    /**
+     * Has answers
+     *
+     * @return bool
+     */
+    public function hasAnswers();
+
+    /**
+     * Add answer
+     *
+     * @param AnswerInterface $answer
+     *
+     * @return $this
+     */
+    public function addAnswer(AnswerInterface $answer);
+
+    /**
+     * Remove answer
+     *
+     * @param AnswerInterface $answer
+     *
+     * @return $this
+     */
+    public function removeAnswer(AnswerInterface $answer);
 }
