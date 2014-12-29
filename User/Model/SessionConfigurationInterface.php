@@ -3,6 +3,7 @@
 namespace Qcm\Component\User\Model;
 
 use Qcm\Component\Answer\Model\AnswerInterface;
+use Qcm\Component\Category\Model\CategoryInterface;
 use Qcm\Component\Question\Model\QuestionInterface;
 
 /**
@@ -13,32 +14,32 @@ interface SessionConfigurationInterface
     /**
      * Set date start
      *
-     * @param \DateTime $date
+     * @param \DateTime|null $date
      *
      * @return $this
      */
-    public function setDateStart(\DateTime $date);
+    public function setDateStart(\DateTime $date = null);
 
     /**
      * Get date start
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getDateStart();
 
     /**
      * Set date end
      *
-     * @param \DateTime $date
+     * @param \DateTime|null $date
      *
      * @return $this
      */
-    public function setDateEnd(\DateTime $date);
+    public function setDateEnd(\DateTime $date = null);
 
     /**
      * Get date end
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getDateEnd();
 
@@ -57,6 +58,47 @@ interface SessionConfigurationInterface
      * @return integer
      */
     public function getTimeout();
+
+    /**
+     * Get categories
+     *
+     * @return mixed
+     */
+    public function getCategories();
+
+    /**
+     * Has category
+     *
+     * @param CategoryInterface $category
+     *
+     * @return bool
+     */
+    public function hasCategory(CategoryInterface $category);
+
+    /**
+     * Has categories
+     *
+     * @return bool
+     */
+    public function hasCategories();
+
+    /**
+     * Add category
+     *
+     * @param CategoryInterface $category
+     *
+     * @return $this
+     */
+    public function addCategory(CategoryInterface $category);
+
+    /**
+     * Remove category
+     *
+     * @param CategoryInterface $category
+     *
+     * @return $this
+     */
+    public function removeCategory(CategoryInterface $category);
 
     /**
      * Get questions

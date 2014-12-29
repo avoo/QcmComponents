@@ -5,6 +5,7 @@ namespace Qcm\Component\User\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Qcm\Component\Answer\Model\AnswerInterface;
+use Qcm\Component\Category\Model\CategoryInterface;
 use Qcm\Component\Question\Model\QuestionInterface;
 
 /**
@@ -13,12 +14,12 @@ use Qcm\Component\Question\Model\QuestionInterface;
 class SessionConfiguration implements SessionConfigurationInterface
 {
     /**
-     * @var \DateTime $datetime
+     * @var \DateTime|null $datetime
      */
     public $dateStart;
 
     /**
-     * @var \DateTime $datetime
+     * @var \DateTime|null $datetime
      */
     public $dateEnd;
 
@@ -26,6 +27,11 @@ class SessionConfiguration implements SessionConfigurationInterface
      * @var integer $timeout
      */
     public $timeout;
+
+    /**
+     * @var CategoryInterface[]|Collection
+     */
+    protected $categories;
 
     /**
      * @var QuestionInterface[]|Collection
@@ -42,6 +48,7 @@ class SessionConfiguration implements SessionConfigurationInterface
      */
     public function __construct()
     {
+        $this->categories = new ArrayCollection();
         $this->questions = new ArrayCollection();
         $this->answers = new ArrayCollection();
     }
@@ -49,11 +56,11 @@ class SessionConfiguration implements SessionConfigurationInterface
     /**
      * Set date start
      *
-     * @param \DateTime $date
+     * @param \DateTime|null $date
      *
      * @return $this
      */
-    public function setDateStart(\DateTime $date)
+    public function setDateStart(\DateTime $date = null)
     {
         $this->dateStart = $date;
 
@@ -63,7 +70,7 @@ class SessionConfiguration implements SessionConfigurationInterface
     /**
      * Get date start
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getDateStart()
     {
@@ -73,11 +80,11 @@ class SessionConfiguration implements SessionConfigurationInterface
     /**
      * Set date end
      *
-     * @param \DateTime $date
+     * @param \DateTime|null $date
      *
      * @return $this
      */
-    public function setDateEnd(\DateTime $date)
+    public function setDateEnd(\DateTime $date = null)
     {
         $this->dateEnd = $date;
 
@@ -87,7 +94,7 @@ class SessionConfiguration implements SessionConfigurationInterface
     /**
      * Get date end
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getDateEnd()
     {
@@ -116,6 +123,70 @@ class SessionConfiguration implements SessionConfigurationInterface
     public function getTimeout()
     {
         return $this->timeout;
+    }
+
+    /**
+     * Get categories
+     *
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Has category
+     *
+     * @param CategoryInterface $category
+     *
+     * @return bool
+     */
+    public function hasCategory(CategoryInterface $category)
+    {
+        return $this->categories->contains($category);
+    }
+
+    /**
+     * Has categories
+     *
+     * @return bool
+     */
+    public function hasCategories()
+    {
+        return !$this->categories->isEmpty();
+    }
+
+    /**
+     * Add category
+     *
+     * @param CategoryInterface $category
+     *
+     * @return $this
+     */
+    public function addCategory(CategoryInterface $category)
+    {
+        if (! $this->hasCategories($category)) {
+            $this->categories->add($category);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param CategoryInterface $category
+     *
+     * @return $this
+     */
+    public function removeCategory(CategoryInterface $category)
+    {
+        if ($this->hasCategories($category)) {
+            $this->categories->removeElement($category);
+        }
+
+        return $this;
     }
 
     /**
