@@ -44,6 +44,22 @@ interface SessionConfigurationInterface
     public function getDateEnd();
 
     /**
+     * Set max questions
+     *
+     * @param integer $number
+     *
+     * @return $this
+     */
+    public function setMaxQuestions($number);
+
+    /**
+     * Get max questions
+     *
+     * @return integer
+     */
+    public function getMaxQuestions();
+
+    /**
      * Set timeout
      *
      * @param integer $timeout

@@ -29,11 +29,6 @@ class SessionConfiguration implements SessionConfigurationInterface
     public $timeout;
 
     /**
-     * @var CategoryInterface[]|Collection
-     */
-    protected $categories;
-
-    /**
      * @var QuestionInterface[]|Collection
      */
     public $questions;
@@ -42,6 +37,16 @@ class SessionConfiguration implements SessionConfigurationInterface
      * @var AnswerInterface[]|Collection
      */
     public $answers;
+
+    /**
+     * @var integer $maxQuestions
+     */
+    protected $maxQuestions;
+
+    /**
+     * @var CategoryInterface[]|Collection
+     */
+    protected $categories;
 
     /**
      * Construct
@@ -99,6 +104,30 @@ class SessionConfiguration implements SessionConfigurationInterface
     public function getDateEnd()
     {
         return $this->dateEnd;
+    }
+
+    /**
+     * Set max questions
+     *
+     * @param integer $number
+     *
+     * @return $this
+     */
+    public function setMaxQuestions($number)
+    {
+        $this->maxQuestions = $number;
+
+        return $this;
+    }
+
+    /**
+     * Get max questions
+     *
+     * @return integer
+     */
+    public function getMaxQuestions()
+    {
+        return $this->maxQuestions;
     }
 
     /**
