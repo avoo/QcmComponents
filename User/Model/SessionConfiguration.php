@@ -41,7 +41,7 @@ class SessionConfiguration implements SessionConfigurationInterface
     /**
      * @var integer $maxQuestions
      */
-    protected $maxQuestions;
+    public $maxQuestions;
 
     /**
      * @var CategoryInterface[]|Collection
@@ -195,7 +195,7 @@ class SessionConfiguration implements SessionConfigurationInterface
      */
     public function addCategory(CategoryInterface $category)
     {
-        if (! $this->hasCategories($category)) {
+        if (!$this->hasCategory($category)) {
             $this->categories->add($category);
         }
 
