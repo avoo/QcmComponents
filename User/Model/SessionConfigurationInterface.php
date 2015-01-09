@@ -12,6 +12,13 @@ use Qcm\Component\Question\Model\QuestionInterface;
 interface SessionConfigurationInterface
 {
     /**
+     * Change ArrayCollection to array answers and questions
+     *
+     * @return $this
+     */
+    public function toArray();
+
+    /**
      * Set date start
      *
      * @param \DateTime|null $date

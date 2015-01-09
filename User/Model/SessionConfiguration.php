@@ -59,6 +59,20 @@ class SessionConfiguration implements SessionConfigurationInterface
     }
 
     /**
+     * Change ArrayCollection to array answers and questions
+     *
+     * @return $this
+     */
+    public function toArray()
+    {
+        $this->categories = $this->categories->toArray();
+        $this->questions = $this->questions->toArray();
+        $this->answers = $this->answers->toArray();
+
+        return $this;
+    }
+
+    /**
      * Set date start
      *
      * @param \DateTime|null $date
