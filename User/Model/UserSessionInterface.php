@@ -33,11 +33,11 @@ interface UserSessionInterface
     /**
      * Set the user configuration
      *
-     * @param SessionConfigurationInterface $configuration
+     * @param SessionConfigurationInterface|array $configuration
      *
      * @return mixed
      */
-    public function setConfiguration(SessionConfigurationInterface $configuration);
+    public function setConfiguration($configuration);
 
     /**
      * Get the user configuration

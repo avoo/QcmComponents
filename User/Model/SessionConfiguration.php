@@ -29,12 +29,17 @@ class SessionConfiguration implements SessionConfigurationInterface
     public $timeout;
 
     /**
-     * @var QuestionInterface[]|Collection
+     * @var array $categories
+     */
+    public $categories;
+
+    /**
+     * @var array $questions
      */
     public $questions;
 
     /**
-     * @var AnswerInterface[]|Collection
+     * @var array $answers
      */
     public $answers;
 
@@ -44,32 +49,23 @@ class SessionConfiguration implements SessionConfigurationInterface
     public $maxQuestions;
 
     /**
-     * @var CategoryInterface[]|Collection
+     * @var \DateTime $startAt
      */
-    protected $categories;
+    public $startAt;
+
+    /**
+     * @var \DateTime $endAt
+     */
+    public $endAt;
 
     /**
      * Construct
      */
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
-        $this->questions = new ArrayCollection();
-        $this->answers = new ArrayCollection();
-    }
-
-    /**
-     * Change ArrayCollection to array answers and questions
-     *
-     * @return $this
-     */
-    public function toArray()
-    {
-        $this->categories = $this->categories->toArray();
-        $this->questions = $this->questions->toArray();
-        $this->answers = $this->answers->toArray();
-
-        return $this;
+        $this->categories = array();
+        $this->questions = array();
+        $this->answers = array();
     }
 
     /**
@@ -169,35 +165,27 @@ class SessionConfiguration implements SessionConfigurationInterface
     }
 
     /**
+     * Set questions
+     *
+     * @param array[CategoryInterface] $categories
+     *
+     * @return $this
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
      * Get categories
      *
-     * @return mixed
+     * @return array
      */
     public function getCategories()
     {
         return $this->categories;
-    }
-
-    /**
-     * Has category
-     *
-     * @param CategoryInterface $category
-     *
-     * @return bool
-     */
-    public function hasCategory(CategoryInterface $category)
-    {
-        return $this->categories->contains($category);
-    }
-
-    /**
-     * Has categories
-     *
-     * @return bool
-     */
-    public function hasCategories()
-    {
-        return !$this->categories->isEmpty();
     }
 
     /**
@@ -209,25 +197,23 @@ class SessionConfiguration implements SessionConfigurationInterface
      */
     public function addCategory(CategoryInterface $category)
     {
-        if (!$this->hasCategory($category)) {
-            $this->categories->add($category);
+        if (!in_array($category->getId(), $this->categories)) {
+            $this->categories[] = $category->getId();
         }
 
         return $this;
     }
 
     /**
-     * Remove category
+     * Set questions
      *
-     * @param CategoryInterface $category
+     * @param array[QuestionInterface] $questions
      *
      * @return $this
      */
-    public function removeCategory(CategoryInterface $category)
+    public function setQuestions($questions)
     {
-        if ($this->hasCategories($category)) {
-            $this->categories->removeElement($category);
-        }
+        $this->questions = $questions;
 
         return $this;
     }
@@ -235,33 +221,11 @@ class SessionConfiguration implements SessionConfigurationInterface
     /**
      * Get questions
      *
-     * @return mixed
+     * @return array
      */
     public function getQuestions()
     {
         return $this->questions;
-    }
-
-    /**
-     * Has question
-     *
-     * @param QuestionInterface $question
-     *
-     * @return bool
-     */
-    public function hasQuestion(QuestionInterface $question)
-    {
-        return $this->questions->contains($question);
-    }
-
-    /**
-     * Has questions
-     *
-     * @return bool
-     */
-    public function hasQuestions()
-    {
-        return !$this->questions->isEmpty();
     }
 
     /**
@@ -273,25 +237,23 @@ class SessionConfiguration implements SessionConfigurationInterface
      */
     public function addQuestion(QuestionInterface $question)
     {
-        if (! $this->hasQuestion($question)) {
-            $this->questions->add($question);
+        if (!in_array($question->getId(), $this->questions)) {
+            $this->questions[] = $question->getId();
         }
 
         return $this;
     }
 
     /**
-     * Remove question
+     * Set answers
      *
-     * @param QuestionInterface $question
+     * @param array[AnswerInterface] $answers
      *
      * @return $this
      */
-    public function removeQuestion(QuestionInterface $question)
+    public function setAnswers($answers)
     {
-        if ($this->hasQuestion($question)) {
-            $this->questions->removeElement($question);
-        }
+        $this->answers = $answers;
 
         return $this;
     }
@@ -307,28 +269,6 @@ class SessionConfiguration implements SessionConfigurationInterface
     }
 
     /**
-     * Has answer
-     *
-     * @param AnswerInterface $answer
-     *
-     * @return bool
-     */
-    public function hasAnswer(AnswerInterface $answer)
-    {
-        return $this->answers->contains($answer);
-    }
-
-    /**
-     * Has answers
-     *
-     * @return bool
-     */
-    public function hasAnswers()
-    {
-        return !$this->answers->isEmpty();
-    }
-
-    /**
      * Add answer
      *
      * @param AnswerInterface $answer
@@ -337,26 +277,58 @@ class SessionConfiguration implements SessionConfigurationInterface
      */
     public function addAnswer(AnswerInterface $answer)
     {
-        if (! $this->hasAnswer($answer)) {
-            $this->answers->add($answer);
+        if (!in_array($answer->getId(), $this->answers)) {
+            $this->answers[] = $answer->getId();
         }
 
         return $this;
     }
 
     /**
-     * Remove answer
+     * Set start date
      *
-     * @param AnswerInterface $answer
+     * @param \DateTime $date
      *
      * @return $this
      */
-    public function removeAnswer(AnswerInterface $answer)
+    public function setStartAt(\DateTime $date)
     {
-        if ($this->hasAnswer($answer)) {
-            $this->answers->removeElement($answer);
-        }
+        $this->startAt = $date;
 
         return $this;
+    }
+
+    /**
+     * Get start date
+     *
+     * @return \Datetime
+     */
+    public function getStartAt()
+    {
+        return $this->startAt;
+    }
+
+    /**
+     * Set end date
+     *
+     * @param \DateTime $date
+     *
+     * @return $this
+     */
+    public function setEndAt(\DateTime $date)
+    {
+        $this->endAt = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get end date
+     *
+     * @return \Datetime
+     */
+    public function getEndAt()
+    {
+        return $this->endAt;
     }
 }

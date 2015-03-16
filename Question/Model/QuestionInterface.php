@@ -11,7 +11,7 @@ use Qcm\Component\Category\Model\CategoryInterface;
  */
 interface QuestionInterface
 {
-    const TYPE_RADIO = 'radio';
+    const TYPE_CHOICE = 'choice';
 
     const TYPE_CHECKBOX = 'checkbox';
 

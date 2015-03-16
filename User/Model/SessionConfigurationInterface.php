@@ -12,13 +12,6 @@ use Qcm\Component\Question\Model\QuestionInterface;
 interface SessionConfigurationInterface
 {
     /**
-     * Change ArrayCollection to array answers and questions
-     *
-     * @return $this
-     */
-    public function toArray();
-
-    /**
      * Set date start
      *
      * @param \DateTime|null $date
@@ -83,27 +76,20 @@ interface SessionConfigurationInterface
     public function getTimeout();
 
     /**
+     * Set questions
+     *
+     * @param array[CategoryInterface] $categories
+     *
+     * @return $this
+     */
+    public function setCategories($categories);
+
+    /**
      * Get categories
      *
-     * @return mixed
+     * @return array
      */
     public function getCategories();
-
-    /**
-     * Has category
-     *
-     * @param CategoryInterface $category
-     *
-     * @return bool
-     */
-    public function hasCategory(CategoryInterface $category);
-
-    /**
-     * Has categories
-     *
-     * @return bool
-     */
-    public function hasCategories();
 
     /**
      * Add category
@@ -115,36 +101,20 @@ interface SessionConfigurationInterface
     public function addCategory(CategoryInterface $category);
 
     /**
-     * Remove category
+     * Set questions
      *
-     * @param CategoryInterface $category
+     * @param array[QuestionInterface] $questions
      *
      * @return $this
      */
-    public function removeCategory(CategoryInterface $category);
+    public function setQuestions($questions);
 
     /**
      * Get questions
      *
-     * @return mixed
+     * @return array
      */
     public function getQuestions();
-
-    /**
-     * Has question
-     *
-     * @param QuestionInterface $question
-     *
-     * @return bool
-     */
-    public function hasQuestion(QuestionInterface $question);
-
-    /**
-     * Has questions
-     *
-     * @return bool
-     */
-    public function hasQuestions();
 
     /**
      * Add question
@@ -156,36 +126,20 @@ interface SessionConfigurationInterface
     public function addQuestion(QuestionInterface $question);
 
     /**
-     * Remove question
+     * Set answers
      *
-     * @param QuestionInterface $question
+     * @param array[AnswerInterface] $answers
      *
      * @return $this
      */
-    public function removeQuestion(QuestionInterface $question);
+    public function setAnswers($answers);
 
     /**
      * Get answers
      *
-     * @return mixed
+     * @return array
      */
     public function getAnswers();
-
-    /**
-     * Has answer
-     *
-     * @param AnswerInterface $answer
-     *
-     * @return bool
-     */
-    public function hasAnswer(AnswerInterface $answer);
-
-    /**
-     * Has answers
-     *
-     * @return bool
-     */
-    public function hasAnswers();
 
     /**
      * Add answer
@@ -197,11 +151,34 @@ interface SessionConfigurationInterface
     public function addAnswer(AnswerInterface $answer);
 
     /**
-     * Remove answer
+     * Set start date
      *
-     * @param AnswerInterface $answer
+     * @param \DateTime $date
      *
      * @return $this
      */
-    public function removeAnswer(AnswerInterface $answer);
+    public function setStartAt(\DateTime $date);
+
+    /**
+     * Get start date
+     *
+     * @return \Datetime
+     */
+    public function getStartAt();
+
+    /**
+     * Set end date
+     *
+     * @param \DateTime $date
+     *
+     * @return $this
+     */
+    public function setEndAt(\DateTime $date);
+
+    /**
+     * Get end date
+     *
+     * @return \Datetime
+     */
+    public function getEndAt();
 }
