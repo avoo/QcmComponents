@@ -1,7 +1,7 @@
 <?php
 namespace Qcm\Component\Answer\Checker;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use Qcm\Component\Answer\Model\AnswerInterface;
 
 /**
  * Interface AnswerCheckerInterface
@@ -18,11 +18,12 @@ interface AnswerCheckerInterface
     /**
      * Get checker options
      *
-     * @param ArrayCollection $answers
+     * @param array $answers
+     * @param array $data
      *
      * @return array
      */
-    public function getOptions(ArrayCollection $answers);
+    public function getOptions($answers, $data);
 
     /**
      * Get checker name
