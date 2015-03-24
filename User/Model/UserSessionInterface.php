@@ -37,7 +37,7 @@ interface UserSessionInterface
      *
      * @return mixed
      */
-    public function setConfiguration($configuration);
+    public function setConfiguration(SessionConfigurationInterface $configuration);
 
     /**
      * Get the user configuration

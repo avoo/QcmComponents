@@ -29,18 +29,11 @@ interface ConfigurationInterface
     public function getAnswersMax();
 
     /**
-     * Checks whether the number of answers per question is strict
-     *
-     * @return boolean
-     */
-    public function isStrict();
-
-    /**
-     * Get timeout per question
+     * Get time per question
      *
      * @return integer
      */
-    public function getTimeoutPerQuestion();
+    public function getTimePerQuestion();
 
     /**
      * Get timeout questionnaire
