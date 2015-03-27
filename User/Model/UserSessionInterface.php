@@ -42,7 +42,7 @@ interface UserSessionInterface
     /**
      * Get the user configuration
      *
-     * @return array
+     * @return SessionConfigurationInterface
      */
     public function getConfiguration();
 }
