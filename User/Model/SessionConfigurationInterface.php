@@ -175,6 +175,22 @@ interface SessionConfigurationInterface
     public function removeQuestion(QuestionInterface $question);
 
     /**
+     * Set questions level
+     *
+     * @param array $questionsLevel
+     *
+     * @return $this
+     */
+    public function setQuestionsLevel($questionsLevel);
+
+    /**
+     * Get questions level
+     *
+     * @return array
+     */
+    public function getQuestionsLevel();
+
+    /**
      * Get answers
      *
      * @return array
