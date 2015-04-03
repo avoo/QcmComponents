@@ -175,6 +175,13 @@ interface SessionConfigurationInterface
     public function removeQuestion(QuestionInterface $question);
 
     /**
+     * Erase questions
+     *
+     * @return $this
+     */
+    public function eraseQuestions();
+
+    /**
      * Set questions level
      *
      * @param array $questionsLevel
