@@ -198,9 +198,25 @@ interface SessionConfigurationInterface
     public function getQuestionsLevel();
 
     /**
+     * Erase answers
+     *
+     * @return $this
+     */
+    public function eraseAnswers();
+
+    /**
+     * Set answers
+     *
+     * @param ArrayCollection $answers
+     *
+     * @return $this
+     */
+    public function setAnswers($answers);
+
+    /**
      * Get answers
      *
-     * @return array
+     * @return ArrayCollection
      */
     public function getAnswers();
 
@@ -269,4 +285,18 @@ interface SessionConfigurationInterface
      * @return \Datetime
      */
     public function getEndAt();
+
+    /**
+     * Set flag
+     *
+     * @param boolean $flag
+     */
+    public function setFlag($flag);
+
+    /**
+     * Is flag
+     *
+     * @return boolean
+     */
+    public function isFlag();
 }
