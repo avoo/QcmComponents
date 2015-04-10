@@ -1,6 +1,8 @@
 <?php
 
 namespace Qcm\Component\Category\Model;
+use Doctrine\Common\Collections\Collection;
+use Qcm\Component\Question\Model\QuestionInterface;
 
 /**
  * Interface CategoryInterface
@@ -45,4 +47,44 @@ interface CategoryInterface
      * @return string
      */
     public function getDescription();
+
+    /**
+     * Get questions
+     *
+     * @return Collection
+     */
+    public function getQuestions();
+
+    /**
+     * Does a question belongs to category?
+     *
+     * @param QuestionInterface $question
+     *
+     * @return Boolean
+     */
+    public function hasQuestion(QuestionInterface $question);
+
+    /**
+     * Is there any questions in category?
+     *
+     * @return bool
+     */
+    public function hasQuestions();
+    /**
+     * Add a question to category
+     *
+     * @param QuestionInterface $question
+     *
+     * @return $this
+     */
+    public function addQuestion(QuestionInterface $question);
+
+    /**
+     * Remove question from category
+     *
+     * @param QuestionInterface $question
+     *
+     * @return $this
+     */
+    public function removeQuestion(QuestionInterface $question);
 }
